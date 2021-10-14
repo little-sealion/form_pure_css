@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="./js/index.js" defer></script>
+    <title>Add Book Form</title>
+</head>
+<body>
+    <form onSubmit="handleSubmit(event)" novalidate>
+        <header>
+            <svg width="16.525mm" height="24.314mm" version="1.1" viewBox="0 0 16.525 24.314" xmlns="http://www.w3.org/2000/svg">
+                <g transform="translate(-74.96 -68.418)">
+                 <rect x="75.956" y="75.13" width="9.2863" height="12.401" rx=".10878" ry="2.7032" stroke="#808000" stroke-width=".39136"/>
+                 <path d="m78.571 91.707c-3.9983-0.54592-4.6324-4.5027-0.075842-4.8963" fill="none" stroke="#000" stroke-width=".71944px"/>
+                </g>
+                <g transform="translate(-74.96 -68.418)">
+                 <rect x="75.956" y="68.717" width="14.287" height="18.815" rx=".16737" ry="4.1011" stroke="#808000" stroke-width=".59793"/>
+                 <path d="m76.171 91.682 15.306 0.1596" fill="none" stroke="#000" stroke-width="1.7803px"/>
+                </g>
+            </svg>
+            <h2>Add a book</h2>
+        </header>
+        <section id="help">
+            <i class="fas fa-question"></i>
+            <video controls hidden
+            src="https://archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4"
+            poster="https://peach.blender.org/wp-content/uploads/title_anouncement.jpg?x11217"
+            width="400">           
+            Sorry, your browser doesn't support embedded videos,
+            but don't worry, you can <a href="https://archive.org/details/BigBuckBunny_124">download it</a>
+            and watch it with your favorite video player!
+            
+            </video>
+        </section>
+        <fieldset>
+            <input autofocus type="text" name="title" id="title" placeholder="Title" required  oninput="validate(event.target)">
+            <label for="title">Book Title</label>
+            <div class="error"></div>
+        </fieldset>
+        <fieldset>
+            <input type="text" name="author" id="author" placeholder="Author" required maxlength="40" oninput="validate(event.target)">
+            <label for="author">Author</label>
+            <div class="error"></div>
+        </fieldset>
+        <fieldset>
+            <input type="text" name="isbn" id="isbn" required pattern="^(97(8|9))?\d{9}(\d|X)$" placeholder="0672317249 | 9780672317248" oninput="validate(event.target)">
+            <label for="isbn">ISBN</label>
+            <div class="error"></div>
+            <div class="helper">ISBN 10 or 13 digits,ISBN 13 numbers start with only 978 or 979.</div>
+        </fieldset>
+        <fieldset>
+            <input type="date" name="publication" id="publication" required oninput="validate(event.target)">
+            <label for="publication">YearofPublication</label>
+            <div class="error"></div>
+            <div class="helper">Publication Date</div>
+        </fieldset>
+
+
+        <fieldset>
+            <select required name="genre" id="genre" oninput="validate(event.target)">
+                <option value="">Please select a genre </option>
+                <option value="Action and Adventure">Action and Adventure</option>
+                <option value="Classics">Classics</option>
+                <option value="Comic Book or Graphic Novel">Comic Book or Graphic Novel</option>
+                <option value="Detective and Mystery">Detective and Mystery</option>
+                <option value="Fantasy">Fantasy</option>
+                <option value="Historical Fiction">Historical Fiction</option>
+                <option value="Horror">Horror</option>
+            </select>
+            <label for="genre">Genre</label>
+            <div class="error"></div>
+        </fieldset>
+
+        <fieldset>
+            <input required placeholder="millions Sold" type="number" name="sold" id="sold" min='0' step="0.01" oninput="validate(event.target)">
+            <label for="sold">Millions Sold</label>
+            <div class="error"></div>
+            <div class="helper"> Number only,increase/decrease step 0.01</div>
+        </fieldset>
+
+        <fieldset id="radio">
+            <legend>Written language</legend>
+            <input type="radio" id="english" name="written_language" value="english">
+            <label for="english">English</label><br>
+            <input type="radio" id="chinese" name="written_language" value="chinese">
+            <label for="chinese">Chinese</label><br>
+            <input type="radio" id="spanish" name="written_language" value="spanish">
+            <label for="spanish">Spanish </label><br>
+            <input type="radio" id="other" name="written_language" value="other">
+            <label for="other">Other </label>
+            <div class="error"></div>
+        </fieldset>
+
+        <fieldset id="avatar-wrapper">
+            <input required id="avatar" name="avatar" type="file" accept="image/*"  oninput="loadImage(event.target)" />
+            <label for="avatar">Upload Book Cover
+                <img hidden id="avatar-image" src="https://dl.acm.org/specs/products/acm/releasedAssets/images/cover-default--book.svg" alt="book cover image">
+            </label>
+            <div class="error"></div>
+            <div class="helper"> Image file only</div>
+        </fieldset>
+
+        <button id="submit" type="submit"  >Add Book</button>
+
+
+    </form>
+</body>
+</html>
