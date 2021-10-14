@@ -171,6 +171,7 @@ img{
 @media only screen and (max-width: 600px) {
     form{
         gap:0px;
+        padding: 1em;
     }
     input:optional{
         display: grid;
